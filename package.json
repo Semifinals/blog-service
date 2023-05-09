@@ -1,0 +1,36 @@
+{
+  "name": "blog-service",
+  "version": "1.0.0",
+  "description": "Microservice to handle blogs in Semifinals API",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "func host start",
+    "dev": "npm run build && npm start",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Semifinals/blog-service.git"
+  },
+  "author": "Finley Sherwood",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Semifinals/blog-service/issues"
+  },
+  "homepage": "https://github.com/Semifinals/blog-service#readme",
+  "devDependencies": {
+    "@azure/functions": "^3.5.1",
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-typescript": "^7.21.5",
+    "@types/jest": "^29.5.1",
+    "@types/node": "^20.1.1",
+    "babel-jest": "^29.5.0",
+    "jest": "^29.5.0",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@azure/cosmos": "^3.17.3"
+  }
+}
