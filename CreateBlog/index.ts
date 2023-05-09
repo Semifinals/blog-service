@@ -76,14 +76,13 @@ const CreateBlog: AzureFunction = async function (
     id,
     slug
   })
-  console.log(context.req?.url + `/${slug}`)
 
   // Respond to the function call
   context.res = {
     status: 201,
     body: item,
     headers: {
-      Location: context.req?.url + `/${slug}`
+      Location: context.req?.url + slug
     }
   }
 }

@@ -36,6 +36,7 @@ const DeleteBlog: AzureFunction = async function (
 
   // Respond to the function call
   context.res = {
+    status: 200,
     body: items[0]
   }
 }

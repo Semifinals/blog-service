@@ -1,4 +1,5 @@
 import { Container, CosmosClient, Database } from "@azure/cosmos"
+import { Agent } from "https"
 
 export async function useCosmos(
   databaseId: string,
@@ -8,10 +9,19 @@ export async function useCosmos(
   database: Database | null
   container: Container | null
 }> {
-  if (!process.env.DbConnectionString)
+  if (!process.env.DbEndpoint || !process.env.DbKey)
     return { database: null, container: null }
 
-  const client = new CosmosClient(process.env.DbConnectionString)
+  const client = new CosmosClient({
+    endpoint: process.env.DbEndpoint,
+    key: process.env.DbKey,
+    agent:
+      process.env.DEV === "true"
+        ? new Agent({
+            rejectUnauthorized: false
+          })
+        : undefined
+  })
   const { database } = await client.databases.createIfNotExists({
     id: databaseId
   })
