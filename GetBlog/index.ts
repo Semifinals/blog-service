@@ -1,9 +1,8 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import { useCosmos } from "../lib/useCosmos"
-import { Blog } from "../lib/blog"
 import { SqlQuerySpec } from "@azure/cosmos"
 
-const DeleteBlog: AzureFunction = async function (
+const GetBlog: AzureFunction = async function (
   context: Context,
   req: HttpRequest
 ): Promise<void> {
@@ -41,4 +40,4 @@ const DeleteBlog: AzureFunction = async function (
   }
 }
 
-export default DeleteBlog
+export default GetBlog

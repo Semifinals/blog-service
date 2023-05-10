@@ -15,7 +15,8 @@ describe("CreateBlog", () => {
     const req = {
       body: {
         id: randomId(),
-        slug: randomSlug()
+        slug: randomSlug(),
+        category: "test"
       }
     }
 
@@ -36,7 +37,8 @@ describe("CreateBlog", () => {
     const req = {
       body: {
         id: randomId(),
-        slug: randomSlug()
+        slug: randomSlug(),
+        category: "test"
       }
     }
 
@@ -56,7 +58,8 @@ describe("CreateBlog", () => {
     const req = {
       body: {
         id: randomId(),
-        slug: randomSlug()
+        slug: randomSlug(),
+        category: "test"
       }
     }
 
@@ -76,7 +79,8 @@ describe("CreateBlog", () => {
     const req = {
       body: {
         id: randomId(),
-        slug: randomSlug()
+        slug: randomSlug(),
+        category: "test"
       }
     }
 

@@ -23,6 +23,16 @@ const CreateBlog: AzureFunction = async function (
       "The 'slug' is too long, it must be less than 64 characters long"
     )
 
+  if (!req.body?.category) errors.push("Missing 'category' in request body")
+  else if (!/^[A-Za-z0-9-_]+$/.test(req.body!.category))
+    errors.push(
+      "The 'category' contains invalid characters, it can only contain alpha-numeric, dashes, and underscores"
+    )
+  else if (String(req.body!.category).length >= 32)
+    errors.push(
+      "The 'category' is too long, it must be less than 32 characters long"
+    )
+
   if (errors.length > 0) {
     context.res = {
       status: 400,
@@ -44,6 +54,7 @@ const CreateBlog: AzureFunction = async function (
   // Check if the id or slug are already in use
   const id = String(req.body.id)
   const slug = String(req.body.slug)
+  const category = String(req.body.category)
 
   const querySpec: SqlQuerySpec = {
     query: "SELECT * FROM blogs b WHERE b.slug = @slug OR b.id = @id",
@@ -74,7 +85,8 @@ const CreateBlog: AzureFunction = async function (
   // Create the new blog
   const { resource: item } = await container.items.create<Blog>({
     id,
-    slug
+    slug,
+    category
   })
 
   // Respond to the function call

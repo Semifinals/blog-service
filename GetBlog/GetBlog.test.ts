@@ -16,7 +16,8 @@ describe("GetBlog", () => {
     const createReq = {
       body: {
         id: randomId(),
-        slug: randomSlug()
+        slug: randomSlug(),
+        category: "test"
       }
     }
 
