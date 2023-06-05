@@ -35,7 +35,7 @@ describe("GetByCategory", () => {
 
     await CreateBlog(context, create2Req)
 
-    const req = { params: { category } }
+    const req = { query: { category } }
 
     // Act
     await GetByCategory(context, req)
@@ -80,7 +80,7 @@ describe("GetByCategory", () => {
 
     await CreateBlog(context, create2Req)
 
-    const req = { params: { category, limit: 1 } }
+    const req = { query: { category, limit: 1 } }
 
     // Act
     await GetByCategory(context, req)
@@ -116,7 +116,7 @@ describe("GetByCategory", () => {
 
     await CreateBlog(context, create2Req)
 
-    const req = { params: { category, offset: 1 } }
+    const req = { query: { category, offset: 1 } }
 
     // Act
     await GetByCategory(context, req)
@@ -130,7 +130,7 @@ describe("GetByCategory", () => {
 
   it("should return empty when no blogs", async () => {
     // Arrange
-    const req = { params: { category: randomCategory() } }
+    const req = { query: { category: randomCategory() } }
 
     // Act
     await GetByCategory(context, req)

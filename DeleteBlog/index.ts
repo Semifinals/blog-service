@@ -6,7 +6,7 @@ const DeleteBlog: AzureFunction = async function (
   context: Context,
   req: HttpRequest
 ): Promise<void> {
-  const id = String(context.bindings.id)
+  const id = String(req.params.id)
 
   // Connect to the database
   const { container } = await useCosmos("blogs-db", "blogs", "/id")
