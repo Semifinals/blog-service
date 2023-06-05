@@ -23,8 +23,7 @@ describe("DeleteBlog", () => {
 
     await CreateBlog(context, createReq)
 
-    context.bindings.id = createReq.body.id
-    const req = {}
+    const req = { params: { id: createReq.body.id } }
 
     // Act
     await DeleteBlog(context, req)
@@ -35,8 +34,7 @@ describe("DeleteBlog", () => {
 
   it("should not delete non-existent blog", async () => {
     // Arrange
-    context.bindings.id += randomId()
-    const req = {}
+    const req = { params: { id: randomId() } }
 
     // Act
     await DeleteBlog(context, req)

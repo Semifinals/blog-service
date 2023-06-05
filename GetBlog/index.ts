@@ -6,7 +6,7 @@ const GetBlog: AzureFunction = async function (
   context: Context,
   req: HttpRequest
 ): Promise<void> {
-  const slug = String(context.bindings.slug)
+  const slug = String(req.params.slug)
 
   // Connect to the database
   const { container } = await useCosmos("blogs-db", "blogs", "/id")

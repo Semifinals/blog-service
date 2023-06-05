@@ -6,7 +6,7 @@
       "direction": "in",
       "name": "req",
       "methods": ["get"],
-      "route": "/{{id:regex(^[A-Za-z0-9_-]{1,63}$)}}"
+      "route": "{slug:regex(^(?!(filter)$).*$)}"
     },
     {
       "type": "http",

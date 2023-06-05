@@ -23,8 +23,7 @@ describe("GetBlog", () => {
 
     await CreateBlog(context, createReq)
 
-    context.bindings.slug = createReq.body.slug
-    const req = {}
+    const req = { params: { slug: createReq.body.slug } }
 
     // Act
     await GetBlog(context, req)
@@ -37,8 +36,7 @@ describe("GetBlog", () => {
 
   it("should not get non-existent blog", async () => {
     // Arrange
-    context.bindings.slug = randomSlug()
-    const req = {}
+    const req = { params: { slug: randomSlug() } }
 
     // Act
     await GetBlog(context, req)
